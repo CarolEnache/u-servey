@@ -36,7 +36,11 @@ firebase.initializeApp(config);
   }
 
   questionSubmit(){
-    //  todo: work on this too
+   firebase.database().ref('usurvey/'+ this.state.uid).set({
+        studentName: this.state.studentName,
+        answers: this.state.answers
+   });
+   this.setState({isSubmitted: true})
   }
 
    constructor(prop) {
@@ -44,7 +48,7 @@ firebase.initializeApp(config);
      
      this.state= {
        uid: uuid.v1(),
-       studentName: 'killerMan',
+       studentName: '',
        answers: {
          answer1: '',
          answer2: '',
